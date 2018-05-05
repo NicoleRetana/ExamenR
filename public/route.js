@@ -31,7 +31,25 @@
         controllerAs: 'vm'
       })
 
-   
+      .state('listaEmpleados', {
+        url: '/listaEmpleados',
+        templateUrl: './components/empleados/listarEmpleados/listarEmpleados.vista.html',
+        data: {
+          pageTitle: 'Lista de empleados'
+        },
+        params: {
+          tempEmpleado: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/empleados/listarEmpleados/listarEmpleados.controlador.js')
+          }]
+        },
+        controller: 'listaEmpleadosControlador',
+        controllerAs: 'vm'
+      })
+
+     
 
      
 

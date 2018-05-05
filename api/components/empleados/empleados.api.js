@@ -22,8 +22,8 @@ module.exports.registrar = (req, res) => {
 }
 
 module.exports.retornar = (req, res) => {
-    EmpleadoModel.find().then((usuarios) => {
-        res.send(usuarios);
+    EmpleadoModel.find().then((empleados) => {
+        res.send(empleados);
     })
 }
 

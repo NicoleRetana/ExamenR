@@ -49,7 +49,7 @@
           let empleadosBD = [];
 
           let peticion = $.ajax({
-              url: 'http://localhost:4000/api/retornar_usuarios',
+              url: 'http://localhost:4000/api/retornar_empleados',
               type: 'get',
               contentType: 'application/x-www-form-urlencoded; charset=utf-8',
               dataType: 'json',
