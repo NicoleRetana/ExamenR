@@ -1,0 +1,82 @@
+<main id="registrarClientes">
+  <section class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 py-5 px-5 panelIzquierdo">
+        <a href="#!/main">
+          <img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al menu principal</a>
+        <img src="../../../sources/img/logo_slateblue.svg" class="my-5" alt="">
+        <a href="#!/regClientes" class="btn btnAccion">Registrar Clientes</a>
+      </div>
+      <div class="col-md-10 py-5 px-5 contenido">
+        <h2>Lista de Usuarios</h2>
+        <div class="form-group">
+          <label for="inputBuscar">Buscar usuarios</label>
+          <input type="text" class="form-control" id="inputBuscar" ng-model="searchUser">
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nº Identificación</th>
+              <th>Primer Nombre</th>
+              <th>Segundo Nombre</th>
+              <th>Primer Apellido</th>
+              <th>Segundo Apellido</th>
+              <th>Fecha de Nacimiento</th>
+              <th>Email</th>
+              <th>Telefono</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="user in vm.usersList | filter:searchUser">
+              <td>{{user.id}}</td>
+              <td>{{user.firstName}}</td>
+              <td>{{user.secondName}}</td>
+              <td>{{user.firstSurname}}</td>
+              <td>{{user.secondSurname}}</td>
+              <td>{{user.birthdate | date:'mediumDate'}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.phone}}</td>
+              <td>
+                <li class="nav-item dropdown btnAccion" style="list-style:none">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" ng-click="vm.edit(user)">Modificar Usuario</a>
+                    <a class="dropdown-item" ng-click="vm.disable(user)">Desactivar Usuario</a>
+                  </div>
+                </li>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        
+        <!-- <div class="card-deck d-flex">
+          <div ng-repeat="user in vm.usersList | filter:searchUser">
+            <div class="card">
+              <img class="card-img-top" src="{{}}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{user.firstName}}</h5>
+                <p>{{user.address}}</p>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+          
+          <!-- <div class="card" style="width: 18rem;" class="col-md-4">
+            <img class="card-img-top" src="{{user.phone}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{user.firstName}} {{user.secondName}} {{user.firstSurname}}</h5>
+              <p class="card-text">{{user.firstName}} {{user.secondName}} {{user.firstSurname}}</p>
+              <a href="">{{user.email}}</a>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div> -->
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>

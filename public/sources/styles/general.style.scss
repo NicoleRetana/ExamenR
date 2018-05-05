@@ -1,0 +1,44 @@
+body {
+  h1 {
+    font-family: 'Montserrat';
+    font-weight: 300;
+    margin: 20px 0;
+  }
+  
+  #btnLogin {
+    border-radius: 0;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 0.8em;
+    font-family: 'Roboto';
+  }
+  #btnLogin:hover {
+    border: 1px solid #33b5cc;
+    background-color:#33b5cc;
+    color: #fff;
+  }
+  .btnAction {
+    background-color: #A5C157;
+    border-radius: 0;
+    font-family: 'Roboto';
+    font-size: 0.8em;
+    width: 150px;
+    color: #221D1D;
+  }
+  .btnAction:hover {
+    color: #fff;
+  }
+  /* logIn */
+  #logIn {
+    margin: 0;
+    padding: 0;
+  }
+  .flat {
+    padding: 0;
+  }
+  footer {
+    background-color: #221D1D;
+    padding: 50px;
+    margin-top: 100px;
+  }
+}

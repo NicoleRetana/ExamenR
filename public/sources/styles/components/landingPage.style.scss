@@ -1,0 +1,57 @@
+#landingPage{
+  .hero{
+    background-image: url("img/gerentes.jpg");
+    background-size: cover;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    color: #fff;
+    h1{
+      font-size: 4.5em;
+      line-height: 1;
+    }
+  }
+  .mycard{
+    background-color: #fafafa;
+    margin: 10px;
+  }
+  .cardHeader{
+    height: 300px;
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+
+
+  #aboutBungalow,
+  #services,#hotels {
+    margin: 100px;
+  }
+
+  @media only screen and (max-width: 600px) {
+  
+    #hero, #aboutBungalow,
+  #services,#hotels {
+    margin: 0;
+    margin-top: 10px;
+  }
+    #heroContent{
+      text-align: center;
+      font-size: 0.8em;
+    }
+    .btnAction{
+      font-size: 1em;
+      width: 150px;
+    }
+    h1{
+      text-align: center;
+      font-size: 1.2em;
+    }
+    p{
+      font-size: 0.8em;
+    }
+  }
+}

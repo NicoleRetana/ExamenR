@@ -1,0 +1,46 @@
+#userRegistration{
+  .highlight{
+    background-color: rgba(0,0,0,0.2);
+    margin: 20px 0;
+  }
+  a{
+    color: #fff;
+    text-decoration: none;
+    margin: 20px 0;
+  }
+  p{
+    font-family: 'Roboto';
+  }
+  .btnAction {
+    border-radius: 0;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 0.8em;
+    font-family: 'Roboto';
+    &:hover{
+      border: 1px solid #A5C157;
+      background-color: #A5C157;
+      color: #fff;
+    }
+  }
+
+  .highlight{
+    background-color: rgba(0,0,0,0.2);
+    padding: 30px;
+  }
+
+  .imgSide{
+    background-image: url("./img/userregistration.jpg");
+    background-size: cover;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0;
+    padding: 20px;
+    color: #fff;
+    h1{
+      font-size: 4.5em;
+      line-height: 1;
+    }
+  }
+}

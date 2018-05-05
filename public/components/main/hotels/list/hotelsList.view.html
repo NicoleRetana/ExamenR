@@ -1,0 +1,24 @@
+<div class="container" id="hotels">
+    <h1>Nuestros hoteles</h1>
+    <div class="form-group">
+      <label for="inputBuscar">Buscar hoteles</label>
+      <input type="text" class="form-control" id="inputBuscar" ng-model="searchHotel">
+    </div>
+    <div class="row">
+      <div class="col-12 col-lg-3 p-2 my-2 d-flex justify-content-between" ng-repeat="hotel in vm.allHotels | filter:searchHotel">
+        <div class="card">
+          <img id="img" class="card-img-top p-1 " src="{{hotel.getFotoHotel()}}" alt="Card image cap">
+          <div class="card-block p-1">
+            <h4 class="card-title p-1">{{hotel.hotelName}}</h4>
+            <p class="card-text p-1">{{hotel.getCanton().name}}, {{hotel.getProvincia().name}}</p>
+            <p class="card-text p-1">{{hotel.address}}</p>
+            <p class="card-text p-1">Para informacion contactenos al telefono {{hotel.phone}} o al correo {{hotel.custServEmail}}.</p>
+            <div class="card-footer text-center">
+              <a href="#" class="btn btnAction small text-center" ng-show="vm.userRole == 2">Ver Detalles</a>
+              <a href="#" class="btn btnAction small text-center" ng-show="vm.userRole == 1">Editar Hotel</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

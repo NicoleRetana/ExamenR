@@ -1,0 +1,11 @@
+{
+    "editor.tabSize": 2,
+    "editor.fontSize": 13,
+    "editor.fontLigatures": true,
+    "editor.renderWhitespace": "all",
+    "editor.renderIndentGuides": true,
+    "editor.renderLineHighlight": "all",
+    "editor.wordWrap": "on",
+    "editor.rulers": [80],
+    "editor.renderControlCharacters": true
+}

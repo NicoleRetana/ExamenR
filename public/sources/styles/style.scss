@@ -1,0 +1,19 @@
+// -----------------------------------------------------------------------------
+// LIBRERIAS
+// -----------------------------------------------------------------------------
+
+// Bootstrap
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+
+
+// -----------------------------------------------------------------------------
+// Estilos de la aplicación
+// -----------------------------------------------------------------------------
+
+@import 'general.style';
+@import 'components/header.style';
+@import 'components/headerNav.style';
+@import 'components/landingPage.style';
+@import 'components/login.style';
+@import 'components/userRegistration.style';
+@import 'components/main.style';

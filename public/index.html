@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="randajad">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="Jason Gutierrez">
+  <title page-title></title>
+  <link rel="shortcut icon" href="./sources/img/icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="./sources/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="./sources/styles.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto" rel="stylesheet">
+</head>
+<body class="font-weight-light">
+  <div ui-view></div>
+
+  <!-- Dependencias -->
+  <script src="./lib/bootstrap/jquery.min.js"></script>
+  <script src="./lib/bootstrap/popper.min.js"></script>
+  <script src="./lib/bootstrap/bootstrap.min.js"></script>
+  <script src="./lib/sweetalert/sweetalert.min.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9Esz6cQxxEjpZ_OvYBZuFVhA5Lao0fZ4" type="text/javascript"></script>
+  <!-- Script de Angular -->
+  <script src="./lib/angular/angular.min.js"></script>
+  <!-- Dependencias de Agular -->
+  <script src="./lib/angular/routing/angular-ui-router.min.js"></script>
+  <script src="./lib/angular/routing/ocLazyLoad.min.js"></script>
+  <script src="./lib/angular/routing/page-title.min.js"></script>
+  <script src="./lib/angular/dependencies/angular-messages.min.js"></script>
+  <script src="./lib/angular/dependencies/angular-scroll.min.js"></script>
+  <script src="./lib/angular/dependencies/ng-file-upload.min.js"></script>
+  <script src="./lib/angular/dependencies/ng-file-upload-shim.min.js"></script>
+  <script src="./lib/angular/dependencies/ng-map.min.js"></script>
+  <script src="./lib/angular/dependencies/angular-animate.min.js"></script>
+
+  <!-- Script de la aplicación -->
+  <script src="./classes.js"></script>
+  <script src="./app.js"></script>
+  <script src="./route.js"></script>
+
+  <!-- Factories -->
+<script src="./components/factories/dataStorage.factory.js"></script>
+
+  <!-- Services -->
+  <script src="./components/services/empleados.servicio.js"></script>
+  <script src="./components/services/imageService.servicio.js"></script>
+ 
+  <!-- Directives -->
+  <script src="./components/directives/header/header.directive.js"></script>
+  <script src="./components/directives/inputFile.directiva.js"></script>
+  <script src="./components/directives/headline/headline.directive.js"></script>
+  
+</body>
+</html>

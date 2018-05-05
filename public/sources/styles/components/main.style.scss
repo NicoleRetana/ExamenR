@@ -1,0 +1,11 @@
+#mainPrincipal{
+  .appview{
+    overflow: scroll;
+    max-height: 100vh;
+  }
+  .mainSidebar{
+    min-height: 100vh;
+    z-index: 10000;
+    position: fixed;
+  }
+}
