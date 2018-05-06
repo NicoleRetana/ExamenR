@@ -21,11 +21,26 @@
             servicioEmpleados.eliminarEmpleado(pempleado);
               $state.reload();
           }
-      });
+      })
   }
 
-  vm.modifyEmpleado = (pempleado) => {
-    $state.go('main.modifyHotel', { tempHotel: JSON.stringify(pHotel) });
-  };
+  vm.modificarEmpleado = (empleado) => {
+    $state.go('modificarEmpleados', { tempEmpleado: JSON.stringify(empleado) });
+}
+
+vm.desactivaEmpleados = (empleado) => {
+    empleado.setEstado(false);
+
+    servicioEmpleados.updateEmpleado(usuario);
+    $window.location.reload();
+}
+
+vm.activaEmpleados= (empleado) => {
+    empleado.setEstado(true);
+
+    servicioEmpleados.updateEmpleado(empleado);
+    $window.location.reload();
+    
+}
   }
 })();

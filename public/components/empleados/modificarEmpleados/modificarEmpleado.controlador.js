@@ -1,156 +1,74 @@
 (() => {
-    'use strict';
-    angular
-      .module('randajad')
-      .controller('ModificarEmpleadoControlador', ModificarEmpleadoControlador);
-  
-      ModificarEmpleadoControlador.$inject = ['$state', '$http','imageService',  'servicioEmpleados', 'Upload'];
-  
-    function ModificarEmpleadoControlador($state, $http,imageService, servicioEmpleados, Upload) {
-      let vm = this;
-  
-      vm.modifyEmpleado = {};
-  
-      vm.objNewEmpleado = {};
-  
-    
-      let EmpleadoToModify = JSON.parse($stateParams.tempEmpleado);
-      vm.objNewEmpleado = Object.assign(new Empleado(), EmpleadoToModify);
-      vm.objNewEmpleado.setId(EmpleadoToModify._id);
-      // }
-  
-      vm.modifyEmpleado.nombreCompleto= vm.objNewHotel.nombreCompleto;
-      vm.modifyEmpleado.codigo = objNewEmpleado.codigo;
-      vm.modifyEmpleado.photo = objNewEmpleado.photo;
-      vm.modifyEmpleado.fecha = objNewEmpleado.fecha;
-      vm.modifyEmpleado.edad = objNewEmpleado.edad;
-      vm.modifyEmpleado.correo = objNewEmpleado.correo;
-      vm.modifyEmpleado.contrasena = objNewEmpleado.contrasena;
-      
-      
-  
-  
-      vm.cloudObj = imageService.getConfiguration();
-  
-      vm.preEditEmpleado = (pempleadoRegistar) => {
-        vm.cloudObj.data.file = pempleadoRegistar.photo[0];
-        Upload.upload(vm.cloudObj).success((data) => {
-          vm.modifHotel(pempleadoRegistar, data.url);
-        });
-      }
-  
-     
-  
-      vm.modifEmpleado = (pEmpleado, url) => {
-        let empleadosBD = dataStorageFactory.retornarEmpleados()
-  
-        pEmpleado.photo = url;
-       
-  
-        empleadosBD.forEach(objEmpleado => {
-          if (objEmpleado._id == vm.objNewEmpleado._id) {
-            objEmpleado.nombreCompleto = pEmpleado.nombreCompleto;
-            objEmpleado.codigo = pEmpleado.codigo;
-            objEmpleado.photo = pEmpleado.photo;
-            objEmpleado.fecha = pEmpleado.fecha;
-            objEmpleado.edad = pEmpleado.edad;
-            objEmpleado.correo= pEmpleado.correo;
-            objEmpleado.contrasena = pEmpleado.contrasena;
-            objEmpleado.servicePhone = pEmpleado.servicePhone;
-            objEmpleado.serviceEmail = pEmpleado.serviceEmail;
-            objEmpleado.reservationPhone = pEmpleado.reservationPhone;
-            objEmpleado.reservationEmail = pEmpleado.reservationEmail;
-            objEmpleado.photo = pHotel.photo;
-  
-  
-            servicioEmpleados.updateHotelData(objEmpleado);
-  
-          }
-        });
-        swal("Edición exitosa", "Empleado modificado correctamente", "success", {
-          button: "Aceptar",
-        });
-        $location.path('/listaEmpleados');
-  
-        
-      }
-    }
-  
-  })();
-
-
-
-
-
-
-
-
-(() => {
-  'use strict'
-
+  'use strict';
   angular
-  .module('randajad')
-  .controller('ModificarEmpleadoControlador', ModificarEmpleadoControlador)
+      .module('randajad')
+      .controller('controladorModificarEmpleado', controladorModificarEmpleado);
 
-  ModificarEmpleadoControlador.$inject = ['$state', '$http','imageService',  'servicioEmpleados', 'Upload'];
+  controladorModificarEmpleado.$inject = ['$http', '$stateParams', '$state', 'servicioEmpleados', 'imageService', 'Upload'];
 
-  function ModificarEmpleadoControlador($state, $http,imageService, servicioEmpleados, Upload){
+  function controladorModificarEmpleado($http, $stateParams, $state, servicioEmpleados, imageService, Upload) {
+      const vm = this;
 
-      const empleadoEditarCodigo = servicioEmpleados.empleadoActivo();
+      vm.modifyEmpleado = {};
 
-      if(empleadoEditarCodigo == undefined){
-          $state.go('/listaEmpleados');
-      }
-      let empleadoActivoInfo = servicioEmpleados.obtenerInfoEmpleado(empleadoEditarCodigo);
+      vm.objNuevoEmpleado = {};
+
+    //   if(!$stateParams.idUsuario){
+        //   $state.go('listaEmpleados');
+    //   }
+
       
-      let vm = this;
+      let empleadoModificar = JSON.parse($stateParams.tempEmpleado);
+      vm.objNuevoEmpleado = Object.assign(new Empleado(), empleadoModificar);
+      vm.objNuevoEmpleado.setId(empleadoModificar.codigo);
+   
+      vm.modifyEmpleado.nombreCompleto = vm.objNuevoEmpleado.nombreCompleto;
+      vm.modifyEmpleado.codigo = vm.objNuevoEmpleado.codigo;
+      vm.modifyEmpleado.photo = vm.objNuevoEmpleado.photo;
+      vm.modifyEmpleado.fecha = new Date(vm.objNuevoEmpleado.fecha);
+      vm.modifyEmpleado.correo = vm.objNuevoEmpleado.correo;
+      vm.modifyEmpleado.contrasena = vm.objNuevoEmpleado.contrasena;
+      
 
-      vm.empleado = {
-        nombreCompleto: empleadoActivoInfo.nombreCompleto,
-        codigo: Number(empleadoActivoInfo.codigo),
-        photo: empleadoActivoInfo.photo,
-        edad: empleadoActivoInfo.edad,
-        correo: empleadoActivoInfo.correo,
-        contrasena: empleadoActivoInfo.contrasena,
-      }
+      vm.modificarEmpleado = (pempleadoRegistar) => {
 
-      vm.cloudObj = imageService.getConfiguration();
+          let pempleadoModificar= Object.assign(new Empleado(),pempleadoRegistar);
+          vm.empleadoPorEditar.fecha = new Date(vm.empleadoPorEditar.fecha);
 
 
-      vm.preEditarEmpleado = (peditarEmpleado) => {
 
-        vm.cloudObj.data.file = peditarEmpleado.photo[0];
-          Upload.upload(vm.cloudObj).success((data) => {
+          let success = servicioEmpleados.updateEmpleado(pempleadoModificar);
 
-              vm.editarEmpleado(peditarEmpleado, data.url);
-          });
-      }
-
-      vm.editarEmpleado = (peditarEmpleado, imgUrl) => {
-          let nuevoEmpleado = new Empleado (peditarEmpleado.nombreCompleto,peditarEmpleado.codigo, imgUrl, peditarEmpleado.fecha, edad,peditarEmpleado.correo, peditarEmpleado.contrasena, );
-          
-          let exito = servicioEmpleados.actualizarEmpleado(nuevoEmpleado);
-
-          if(!exito){
+          if (success == true) {
               swal({
-                  title: 'El empleado no se pudo modificar',
-                  text: 'Intente más tarde',
-                  icon: 'error',
-                  button: 'Aceptar'
+                  title: "Registro exitoso",
+                  text: "El empleado se ha editado correctamente",
+                  icon: "success",
+                  button: "Aceptar"
               });
-          }else{
+              vm.empleadoPorEditar = null;
+              $state.go('listaEmpleados');
+          } else {
               swal({
-                  title: 'Empleado editado',
-                  text: 'Ahora la nueva informacion podrá ser vista por los visitantes',
-                  icon: 'success',
-                  button: 'Aceptar'
+                  title: "Edición fallida",
+                  text: "Ha ocurrido un error, inténtelo nuevamente más tarde",
+                  icon: "error",
+                  button: "Aceptar"
               });
-              $state.go('/listaEmpleados');
           }
       }
 
-      vm.borrarSesion = () => {
-          $state.go('/listaEmpleados');
-      }
   }
+
 })();
+
+
+
+
+
+
+
+
+
+
+

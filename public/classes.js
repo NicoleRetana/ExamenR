@@ -1,6 +1,6 @@
 class Empleado{
   constructor(pNombreCompleto,pcodigo,pPhoto,pFecha, pEdad,pCorreo, pContrasena,pconfirmarContrasena,pestado){
-    this._id = 0;
+   
     this.nombreCompleto = pNombreCompleto;
     this.codigo = pcodigo;
     this.photo = pPhoto;
@@ -12,7 +12,11 @@ class Empleado{
     
   }
   getId(){
-    return this.codigo
+    return this.codigo;
+}
+
+setId(pcodigo){
+   this.codigo=pcodigo;
 }
   getCorreo() {
     return this.correo;

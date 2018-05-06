@@ -81,7 +81,7 @@
             return $ocLazyLoad.load('./components/empleados/modificarEmpleados/modificarEmpleado.controlador.js')
           }]
         },
-        controller: 'ModificarEmpleadoControlador',
+        controller: 'controladorModificarEmpleado',
         controllerAs: 'vm'
       })
 
