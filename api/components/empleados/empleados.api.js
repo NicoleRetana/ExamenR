@@ -4,6 +4,7 @@ module.exports.registrar = (req, res) => {
 
     var newEmpleado = new EmpleadoModel({
         nombreCompleto: req.body.nombreCompleto,
+        codigo: req.body.codigo,
         photo: req.body.photo,
         fecha: req.body.fecha,
         edad: req.body.edad,
@@ -27,6 +28,17 @@ module.exports.retornar = (req, res) => {
     })
 }
 
+module.exports.update = (req,res) => {
+    req.body.rating = JSON.parse(req.body.rating);
+    EmpleadoModel.update({_id: req.body._id}, req.body, (err, hotel) => {
+      if (err){
+        res.json({success:false, msg: 'No se ha actualizado.' + handleError(err)});
+      } else{
+        res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
+        console.log(req.body);
+      }
+    });
+  };
 
 
 

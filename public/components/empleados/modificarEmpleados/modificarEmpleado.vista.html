@@ -12,10 +12,10 @@
         </div>
       </div>
       <div class="col-md-7">
-        <form name="formregistroEmpleados" ng-submit="vm.preRegistrarEmpleado(vm.empleado)"novalidate class="col-md-8">
+        <form name="formregistroEmpleados" ng-submit="vm.preEditarEmpleado(vm.empleado)"novalidate class="col-md-8">
           <!-- Información Personal -->
           <div class="my-3">
-            <h1>Registro de Empleados</h1>
+            <h1>Modificar información del empleado</h1>
           
             <div class="form-row">
               <div class="form-group col-md-6">
@@ -31,16 +31,14 @@
                   </div>
                 </div>
               </div>
-
               <div class="form-group py-3">
                 <label>* ID de empleado</label>
-                <input type="number" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 border-dark" ng-model="vm.empleado.codigo" required >
+                <input type="number" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 border-dark" ng-model="vm.empleado.codigo" required disabled>
             </div>
-        
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="">Foto del empleado</label>
-                  <input type="file" files-Input ng-model="vm.empleado.photo">
+                  <input type="file" img-upload class="" ng-model="vm.empleado.photo">
                 </div>
               </div>
         
@@ -91,7 +89,7 @@
             </div>
           </div>
 
-              <button type="submit" class="btn btnAction" ng-disabled="formregistroEmpleados.$invalid">Registrar</button>
+              <button type="submit" class="btn btnAction" ng-disabled="formregistroEmpleados.$invalid">Modificar</button>
             </div>
           </div>
         

@@ -49,9 +49,38 @@
         controllerAs: 'vm'
       })
 
-     
+      .state('modificarEmpleados', {
+        url: '/modificarEmpleado',
+        templateUrl: './components/empleados/modificarEmpleados/modificarEmpleado.vista.html',
+        data: {
+          pageTitle: 'Lista de empleados'
+        },
+        params: {
+          tempEmpleado: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/empleados/modificarEmpleados/modificarEmpleado.controlador.js')
+          }]
+        },
+        controller: 'ModificarEmpleadoControlador',
+        controllerAs: 'vm'
+      })
 
-     
+      .state('perfilEmpleado', {
+        url: '/perfilEmpleado',
+        templateUrl: './components/empleados/perfilEmpleados/perfilEmpleados.vista.html',
+        data: {
+          pageTitle: 'Perfil de empleado'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/empleados/perfilEmpleados/perfilEmpleados.controlador.js')
+          }]
+        },
+        controller: 'controladorPerfilEmpleado',
+        controllerAs: 'vm'
+      })
 
       
       

@@ -19,8 +19,14 @@
 
       vm.registrarEmpleado = (pempleadoRegistar, imgUrl) => {
           pempleadoRegistar.photo = imgUrl;
-          let edadValida = verificarEdad(pempleadoRegistar.fecha),
+          let edad = calcularEdad(pempleadoRegistar.fecha),
+                edadValida = verificarEdad(edad),
               contrasenasValidas = validarContrasenias(pempleadoRegistar.contrasena, pempleadoRegistar.confirmarContrasena);
+
+
+          let tempEmpleado = Object.assign(new Empleado(), pempleadoRegistar);
+        //   let confirmation = servicioEmpleados.agregarEmpleado(tempEmpleado);
+
 
           if(!edadValida || !contrasenasValidas){
               swal({
@@ -30,7 +36,8 @@
                   button: 'Aceptar'
               });
           }else{
-              let nuevoRegistroEmpleado = new Empleado(pempleadoRegistar.nombreCompleto, pempleadoRegistar.photo, pempleadoRegistar.fecha, pempleadoRegistar.edadMs,pempleadoRegistar.correo,pempleadoRegistar.contrasena,  pempleadoRegistar.confirmarContrasena);
+              let nuevoRegistroEmpleado = new Empleado(pempleadoRegistar.nombreCompleto, pempleadoRegistar.codigo, imgUrl, pempleadoRegistar.fecha, edad,pempleadoRegistar.correo,pempleadoRegistar.contrasena);
+
 
               let exito = servicioEmpleados.agregarEmpleado(nuevoRegistroEmpleado);
 
@@ -53,11 +60,16 @@
           }
       }
 
-      function verificarEdad(pnacimiento){
-          let menor = false,
-              edadMs = new Date() - pnacimiento;
+      function calcularEdad(pnacimiento){
+        let edad = (new Date() - pnacimiento) / 31536000000;
+
+        return Math.trunc(edad);
+      }
+
+      function verificarEdad(pedad){
+          let menor = false;
     
-          if(edadMs/31536000000<18){
+          if(pedad<18){
             menor = true
           }
           return !menor
