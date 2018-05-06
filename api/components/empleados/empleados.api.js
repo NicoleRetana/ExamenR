@@ -31,23 +31,18 @@ module.exports.retornar = (req, res) => {
 }
 
 module.exports.update = (req,res) => {
-    req.body.rating = JSON.parse(req.body.rating);
-    EmpleadosModel.update({_id: req.body._id}, req.body, (err, empleado) => {
-      if (err){
-        res.json({success:false, msg: 'No se ha actualizado.' + handleError(err)});
+    EmpleadoModel.update({codigo: req.body.codigo}, req.body, (err, empleado) => {
+      console.log(req.body.codigo);
+              if (err){
+        res.json({success:false,msg:'No se ha actualizado.' + handleError(err)});
+  
       } else{
         res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
-        console.log(req.body);
       }
     });
   };
   
-  module.exports.search_hotel_by_id = function(req, res){
-    EmpleadoModel.findById({_id : req.body.id}).then(
-        function(empleadp){
-            res.send(empleado);
-        });
-  };
+  
   
 
 

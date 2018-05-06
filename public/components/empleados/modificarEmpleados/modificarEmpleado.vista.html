@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="form" ng-submit="preEditEmpleado(vm.modifyEmpleado)">
+  <form class="form" ng-submit="vm.modifEmpleado(vm.modifyEmpleado)">
 
    
     <div class="form-group">
@@ -11,15 +11,10 @@
 
     <div class="form-group">
       <label for="">Codigo</label>
-      <input type="text" class="form-control" ng-model="vm.modifyEmpleado.codigo">
+      <input type="text" class="form-control" ng-model="vm.modifyEmpleado.codigo" disabled>
     </div>
 
-    <div class="row">
-      <div class="form-group col-md-3">
-        <label for="">Imagen</label>
-        <input type="file" img-upload class="form-control" ng-model="vm.modifyEmpleado.photo">
-      </div>
-    </div>
+    
 
     
       <div class="form-group col-md-6">

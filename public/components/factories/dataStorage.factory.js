@@ -10,11 +10,11 @@
       let dataAPI = {
           agregarEmpleado: _agregarEmpleado,
           retornarEmpleados: _retornarEmpleados,
-          actualizarEmpleado: _actualizarEmpleado,
+          updateEmpleadoData: _updateEmpleadoData,
           
-          sendMail: _sendMail,
+          sendMail: _sendMail
 
-          agregarTareaEmpleado: _agregarTareaEmpleado,
+          
 
            
 
@@ -107,37 +107,7 @@
       });
     }
 
-    function _actualizarEmpleado(data){
-        let response;
-
-        let peticion = $.ajax({
-            url: 'http://localhost:4000/api/actualizar_empleado',
-            type: 'put',
-            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-            dataType: 'json',
-            async: false,
-            data: {
-                'nombreCompleto': data.nombreCompleto,
-                'codigo': data.codigo,
-                'photo': data.photo,
-                'fecha': data.fecha,
-                'edad': data.edad,
-                'correo': data.correo,
-                'contrasena': data.contrasena,
-                'estado': data.getEstado()
-                
-              
-               
-            }
-        });
-        peticion.done((datos) => {
-            response = datos.success;
-        });
-        peticion.fail((err) => {
-            response = err
-        });
-        return response;
-    }
+    
 
     function _obtenerListaPorEstados(pestado) {
         let listaEmpleados = _obtenerlistadeEmpleados(),
@@ -152,33 +122,43 @@
       }
 
 
-    function _agregarTareaEmpleado(codigo, codigoTarea){
+   
+
+    function _updateEmpleadoData(data) {
         let response;
-        let peticion = $.ajax({
-          url: 'http://localhost:4000/api/agregar_tarea_empleado',
+  
+        let petition = $.ajax({
+          url: 'http://localhost:4000/api/actualizar_empleado',
           type: 'put',
           contentType: 'application/x-www-form-urlencoded; charset=utf-8',
           dataType: 'json',
           async: false,
           data: {
-            codigo : codigo,
-            codigoTarea : codigoTarea
+            'nombreCompleto': data.nombreCompleto,
+            
+            'photo': data.photo,
+            'fecha': data.fecha,
+            'edad': data.edad,
+            'correo': data.correo,
+            'contrasena': data.contrasena,
+            'estado': data.estado,
+                
           }
         });
   
-        peticion.done((datos) => {
+        petition.done((datos) => {
           response = datos.success;
           console.log('Petición realizada con éxito');
         });
-        peticion.fail((error) => {
+        petition.fail(error => {
           response = error;
-          console.log('Ocurrió un error con la calificacion');
+          console.log('Ocurrió un error');
         });
   
         return response;
-    }
+      }
 
-    
+
 
    
     

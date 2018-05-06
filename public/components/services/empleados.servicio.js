@@ -12,14 +12,10 @@
       const publicAPI = {
           agregarEmpleado: _agregarEmpleado,
           retornarEmpleados: _retornarEmpleados,
-          actualizarEmpleado: _actualizarEmpleado,
+          actualizarEmpleado: _actualizarEmpleado
 
          
 
-          crearSesion: _crearSesion,
-          empleadoActivo: _empleadoActivo,
-          borrarSesion: _borrarSesion,
-          obtenerInfoEmpleado: _obtenerInfoEmpleado
       }
       return publicAPI
 
@@ -73,44 +69,13 @@
         return listaFiltrada;
       }
 
-      function _crearSesion(pcodigo){
-        let exito = dataStorageFactory.crearSesion(key, pcodigo);
-
-        return exito
-    }
+     
 
     function _actualizarEmpleado(pempleado){
-        let exito = dataStorageFactory.actualizarEmpleado(pempleado);
-        return exito
-    }
-    
-    function _empleadoActivo(){
-        let sesionActiva = dataStorageFactory.retornarSesionActiva(key),
-            codigoActivo;
-
-        if(!sesionActiva){
-            codigoActivo = undefined;
-        }else{
-            codigoActivo = sesionActiva;
-        }
-        return codigoActivo
+        dataStorageFactory.updateEmpleadoData(pempleado);
+        
     }
 
-    function _obtenerInfoEmpleado(pcodigo){
-        let empleadosBD = _retornarEmpleados(),
-            empleadoActivo = [];
-
-        for(let i=0; i<empleadosBD.length; i++){
-            if(empleadosBD[i].getId() == pcodigo){
-                empleadoActivo = empleadosBD[i];
-            }
-        }
-        return empleadoActivo
-    }
-
-    function _borrarSesion(){
-        dataStorageFactory.eliminarSesion(key);
-    }
   
   }
 })();
