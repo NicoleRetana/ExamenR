@@ -10,6 +10,8 @@ module.exports.registrar = (req, res) => {
         edad: req.body.edad,
         correo: req.body.correo,
         contrasena: req.body.contrasena,
+      
+    
 
     });
 
@@ -30,7 +32,7 @@ module.exports.retornar = (req, res) => {
 
 module.exports.update = (req,res) => {
     req.body.rating = JSON.parse(req.body.rating);
-    EmpleadoModel.update({_id: req.body._id}, req.body, (err, hotel) => {
+    EmpleadosModel.update({_id: req.body._id}, req.body, (err, empleado) => {
       if (err){
         res.json({success:false, msg: 'No se ha actualizado.' + handleError(err)});
       } else{
@@ -39,6 +41,15 @@ module.exports.update = (req,res) => {
       }
     });
   };
+  
+  module.exports.search_hotel_by_id = function(req, res){
+    EmpleadoModel.findById({_id : req.body.id}).then(
+        function(empleadp){
+            res.send(empleado);
+        });
+  };
+  
+
 
 
 

@@ -18,7 +18,7 @@ router.route('/retornar_empleados')
         empleados.retornar(req, res)
     });
 
-    router.route('/update_empleado')
+    router.route('/actualizar_empleado')
   .put((req, res) => {
     empleados.update(req,res);
 });

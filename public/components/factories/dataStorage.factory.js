@@ -14,9 +14,11 @@
           
           sendMail: _sendMail,
 
-          crearSesion: _crearSesion,
-          eliminarSesion: _eliminarSesion,
-          retornarSesionActiva: _retornarSesionActiva
+          agregarTareaEmpleado: _agregarTareaEmpleado,
+
+           
+
+         
           
       }
       return dataAPI
@@ -38,7 +40,8 @@
                   'edad': data.edad,
                   'correo': data.correo,
                   'contrasena': data.contrasena,
-                  
+                  'estado': data.getEstado()
+                 
               }
           });
           peticion.done((datos) => {
@@ -64,13 +67,19 @@
 
           peticion.done((empleados) => {
               empleadosBD = empleados;
+              empleados.forEach(objEmpleado => {
+                let empleadoTemp = Object.assign(new Empleado(), objEmpleado);
+      
+                
           });
           peticion.fail(() => {
               empleadosBD = [];
               console.log('Error en la petición');
           });
-          return empleadosBD
-      }
+        
+        });
+        return empleadosBD;
+    }
 
       
     function _sendMail(data) {
@@ -102,7 +111,7 @@
         let response;
 
         let peticion = $.ajax({
-            url: 'http://localhost:4000/api/update_empleado',
+            url: 'http://localhost:4000/api/actualizar_empleado',
             type: 'put',
             contentType: 'application/x-www-form-urlencoded; charset=utf-8',
             dataType: 'json',
@@ -112,8 +121,12 @@
                 'codigo': data.codigo,
                 'photo': data.photo,
                 'fecha': data.fecha,
+                'edad': data.edad,
                 'correo': data.correo,
                 'contrasena': data.contrasena,
+                'estado': data.getEstado()
+                
+              
                
             }
         });
@@ -125,20 +138,49 @@
         });
         return response;
     }
-    function _crearSesion(key, value){
-        let exito = true;
-        sessionStorage.setItem(key, JSON.stringify(value));
 
-        return exito
+    function _obtenerListaPorEstados(pestado) {
+        let listaEmpleados = _obtenerlistadeEmpleados(),
+            listaFiltrada = [];
+  
+        for(let i = 0; i < listaEmpleados.length; i++){
+          if(listaEmpleados[i].getEstado() == pestado){
+            listaFiltrada.push(listaEmpleados[i]);
+          }
+        }
+        return listaFiltrada;
+      }
+
+
+    function _agregarTareaEmpleado(codigo, codigoTarea){
+        let response;
+        let peticion = $.ajax({
+          url: 'http://localhost:4000/api/agregar_tarea_empleado',
+          type: 'put',
+          contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+          dataType: 'json',
+          async: false,
+          data: {
+            codigo : codigo,
+            codigoTarea : codigoTarea
+          }
+        });
+  
+        peticion.done((datos) => {
+          response = datos.success;
+          console.log('Petición realizada con éxito');
+        });
+        peticion.fail((error) => {
+          response = error;
+          console.log('Ocurrió un error con la calificacion');
+        });
+  
+        return response;
     }
 
-    function _eliminarSesion(key){
-        sessionStorage.removeItem(key);
-    }
+    
 
-    function _retornarSesionActiva(key){
-        return JSON.parse(sessionStorage.getItem(key));
-    }
+   
     
   }
 })();

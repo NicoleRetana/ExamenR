@@ -1,24 +1,21 @@
-<div id="userRegistration">
+<header-Directive></header-Directive>
+<section>
+    <div class="jumbotron jumbotron-fluid align-items-center">
+     
+    </div>
+  </section>
   <section class="container-fluid">
     <div class="row">
-      <div class="col-md-5 imgSide">
-        <div>
-          <a href="" ui-sref="landingPage"> <img src="../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar a la pagina principal</a>
-        </div>
-        <div class="highlight">
-          <img src="../../sources/img/bungalowlogo_white.svg" alt="" class="mb-3" width="200px" height="50px">
-          <p>Viajar es algo extraordinario, una experiencia sin igual. En Bungalow te ofrecemos una interminable
-          lista de opciones para vos, tu familia y amigos para que disfrutés de las mejores comodidades donde quiera que vayás.</p>
-        </div>
-      </div>
-      <div class="col-md-7">
-        <form name="formregistroEmpleados" ng-submit="vm.preRegistrarEmpleado(vm.empleado)"novalidate class="col-md-8">
+      
+      <div class="col-md-12">
+        
+        <form name="formregistroEmpleados" ng-submit="vm.preRegistrarEmpleado(vm.empleado)"novalidate class="col-md-8" >
           <!-- Información Personal -->
-          <div class="my-3">
-            <h1>Registro de Empleados</h1>
+   
+            <h1>Registro empleados</h1>
           
             <div class="form-row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-12">
                 <label for="inputFirstName">Nombre completo</label>
                 <input type="text" class="form-control" ng-model="vm.empleado.nombreCompleto " name="txtFirstName"
                   pattern="[ñáéíóúA-Za-z ]+" autocomplete="off" required>
@@ -32,7 +29,7 @@
                 </div>
               </div>
 
-              <div class="form-group py-3">
+              <div class="form-group ">
                 <label>* ID de empleado</label>
                 <input type="number" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 border-dark" ng-model="vm.empleado.codigo" required >
             </div>
@@ -98,6 +95,7 @@
           
         </form>
       </div>
+     
     </div>
   </section>
   </div>

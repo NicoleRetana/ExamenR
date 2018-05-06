@@ -28,8 +28,8 @@
     vm.newHotelData.reservEmail = selectedHotel.reservEmail;
     vm.newHotelData.reservPhone = selectedHotel.reservPhone;
 
-    vm.updateHotelData = (pupdatehotel) => {
-      let success = userService.updateHotel(pupdatehotel);
+    vm.actualizarEmpleado = (pupdatehotel) => {
+      let success = userService.actualizarEmpleado(pupdatehotel);
     };
   }
 })();

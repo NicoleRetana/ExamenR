@@ -14,6 +14,7 @@
           retornarEmpleados: _retornarEmpleados,
           actualizarEmpleado: _actualizarEmpleado,
 
+         
 
           crearSesion: _crearSesion,
           empleadoActivo: _empleadoActivo,
@@ -53,11 +54,23 @@
           if(empleadosBD.length == 0){
           }else{
               empleadosBD.forEach(obj => {
-                  let nuevoRegistroEmpleado = new Empleado(obj.nombreCompleto,obj.codigo, obj.photo, New Date(obj.fecha), obj.edad, obj.correo,obj.contrasena);
+                  let nuevoRegistroEmpleado = new Empleado(obj.nombreCompleto,obj.codigo, obj.photo, obj.fecha, obj.edad, obj.correo,obj.contrasena);
                   todosLosEmpleados.push(nuevoRegistroEmpleado);
               });
           }
           return todosLosEmpleados
+      }
+
+      function _obtenerListaPorEstados(pestado) {
+        let empleadosBD = dataStorageFactory.retornarEmpleados(),
+            listaFiltrada = [];
+  
+        for(let i = 0; i < empleadosBD .length; i++){
+          if(empleadosBD [i].getEstado() == pestado){
+            listaFiltrada.push(empleadosBD [i]);
+          }
+        }
+        return listaFiltrada;
       }
 
       function _crearSesion(pcodigo){
@@ -70,7 +83,7 @@
         let exito = dataStorageFactory.actualizarEmpleado(pempleado);
         return exito
     }
-
+    
     function _empleadoActivo(){
         let sesionActiva = dataStorageFactory.retornarSesionActiva(key),
             codigoActivo;

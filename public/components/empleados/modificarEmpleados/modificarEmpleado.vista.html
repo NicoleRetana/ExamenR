@@ -1,101 +1,47 @@
-<div id="userRegistration">
-  <section class="container-fluid">
-    <div class="row">
-      <div class="col-md-5 imgSide">
-        <div>
-          <a href="" ui-sref="landingPage"> <img src="../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar a la pagina principal</a>
-        </div>
-        <div class="highlight">
-          <img src="../../sources/img/bungalowlogo_white.svg" alt="" class="mb-3" width="200px" height="50px">
-          <p>Viajar es algo extraordinario, una experiencia sin igual. En Bungalow te ofrecemos una interminable
-          lista de opciones para vos, tu familia y amigos para que disfrutés de las mejores comodidades donde quiera que vayás.</p>
-        </div>
-      </div>
-      <div class="col-md-7">
-        <form name="formregistroEmpleados" ng-submit="vm.preEditarEmpleado(vm.empleado)"novalidate class="col-md-8">
-          <!-- Información Personal -->
-          <div class="my-3">
-            <h1>Modificar información del empleado</h1>
-          
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputFirstName">Nombre completo</label>
-                <input type="text" class="form-control" ng-model="vm.empleado.nombreCompleto " name="txtFirstName"
-                  pattern="[ñáéíóúA-Za-z ]+" autocomplete="off" required>
-                <div ng-messages="formregistroEmpleados.txtFirstName.$error" role="alert">
-                  <div ng-message="required">
-                    <small class="form-text text-muted">Este campo es requerido</small>
-                  </div>
-                  <div ng-message="pattern">
-                    <small class="form-text text-muted">Formato incorrecto, no se permite ingresar numeros</small>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group py-3">
-                <label>* ID de empleado</label>
-                <input type="number" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 border-dark" ng-model="vm.empleado.codigo" required disabled>
-            </div>
-              <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="">Foto del empleado</label>
-                  <input type="file" img-upload class="" ng-model="vm.empleado.photo">
-                </div>
-              </div>
-        
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputFechaNacimiento">Fecha de nacimiento</label>
-                  <input type="date" class="form-control" ng-model="vm.empleado.fecha" name="txtBirthdate"
-                    autocomplete="off" required>
-                  <div ng-messages="formregistroEmpleados.txtBirthdate.$error" role="alert">
-                    <div ng-message="required">
-                      <small class="form-text text-muted">Este campo es requerido</small>
-                    </div>
-                  </div>
-                </div>
-          
-        
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputEmail">Correo Electrónico:</label>
-                <input type="email" class="form-control" ng-model="vm.empleado.correo" name="txtClientEmail" autocomplete="off"
-                  required>
-                <div ng-messages="formregistroEmpleados.txtClientEmail.$error" role="alert">
-                  <div ng-message="required">
-                    <small class="form-text text-muted">Este campo es requerido</small>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputEmail">Contraseña:</label>
-                <input type="password" class="form-control" ng-model="vm.empleado.contrasena" name="txtClientPassword" autocomplete="off"
-                  required>
-                <div ng-messages="formregistroEmpleados.txtClientPassword.$error" role="alert">
-                  <div ng-message="required">
-                    <small class="form-text text-muted">Este campo es requerido</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="inputEmail">Confirme su contraseña:</label>
-              <input type="password" class="form-control" ng-model="vm.empleado.confirmarContrasena" name="txtClientPassword" autocomplete="off"
-                required>
-              <div ng-messages="formregistroEmpleados.txtClientPassword.$error" role="alert">
-                <div ng-message="required">
-                  <small class="form-text text-muted">Este campo es requerido</small>
-                </div>
-              </div>
-            </div>
-          </div>
+<div class="container">
+  <form class="form" ng-submit="preEditEmpleado(vm.modifyEmpleado)">
 
-              <button type="submit" class="btn btnAction" ng-disabled="formregistroEmpleados.$invalid">Modificar</button>
-            </div>
-          </div>
-        
-          
-        </form>
+   
+    <div class="form-group">
+      <label for="">Nombre completo</label>
+      <textarea class="form-control" ng-model="vm.modifyEmpleado.nombreCompleto"></textarea>
+    </div>
+
+    
+
+    <div class="form-group">
+      <label for="">Codigo</label>
+      <input type="text" class="form-control" ng-model="vm.modifyEmpleado.codigo">
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-3">
+        <label for="">Imagen</label>
+        <input type="file" img-upload class="form-control" ng-model="vm.modifyEmpleado.photo">
       </div>
     </div>
-  </section>
-  </div>
+
+    
+      <div class="form-group col-md-6">
+        <label for="">Fecha de nacimiento</label>
+        <input type="date" class="form-control" ng-model="vm.modifyEmpleado.fecha" name="txtBirthdate"
+          autocomplete="off" required>
+      </div>
+
+    
+
+      <div class="form-group col-md-6">
+        <label for="">Correo</label>
+        <input type="email" class="form-control" ng-model="vm.vm.modifyEmpleado.correo">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="">Contrasena</label>
+        <input type="text" class="form-control" ng-model="vm.vm.modifyEmpleado.contrasena">
+      </div>
+      
+    
+    <div class="form-group">
+      <button type="sumbmit" class="btn btnReg">Registrar</button>
+    </div>
+  </form>
+</div>

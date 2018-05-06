@@ -49,6 +49,24 @@
         controllerAs: 'vm'
       })
 
+
+      .state('listaEmpleadosDeshabilitados', {
+        url: '/listaEmpleadosDeshabilitados',
+        templateUrl: './components/empleados/empleadosDeshabilitados/listarDeshabilitados.vista.html',
+        data: {
+          pageTitle: 'Lista de empleados'
+        },
+        params: {
+          tempEmpleado: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/empleados/empleadosDeshabilitados/listarDeshabilitados.controller.js')
+          }]
+        },
+        controller: 'empleadosDeshabilitadosControlador',
+        controllerAs: 'vm'
+      })
       .state('modificarEmpleados', {
         url: '/modificarEmpleado',
         templateUrl: './components/empleados/modificarEmpleados/modificarEmpleado.vista.html',

@@ -6,7 +6,7 @@
   </div>
 </form>
 
-<div class="jumbotron fixImage" ng-repeat="empleados in vm.retornarEmpleados | filter:searchEmpleado">
+<div class="jumbotron fixImage" ng-repeat="empleados in vm.listarEmpleadosDeshabilitados| filter:searchEmpleado">
   <h3 class="display-4">{{empleados.nombreCompleto}}</h3>
 
   <hr class="my-4">
@@ -23,14 +23,10 @@
     
      
       <p>Correo electrónico: {{empleados.correo}}</p>
-      
-     
-
-      <button class="btn " ng-click="vm.deshabilitarEmpleado(empleado)" ng-show="{{empleados.getEstado()}}==true">Desactivar</button>
+      <button class="btn btn-lg btnModify" ng-click="vm.modify(Empleado)" >Habilitar empleado</button>
       
     </div>
   </div>
  
   >
 </div>
-
