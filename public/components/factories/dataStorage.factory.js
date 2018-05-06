@@ -135,7 +135,7 @@
           async: false,
           data: {
             'nombreCompleto': data.nombreCompleto,
-            
+            'codigo': data.codigo,
             'photo': data.photo,
             'fecha': data.fecha,
             'edad': data.edad,
