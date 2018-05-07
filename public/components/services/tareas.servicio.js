@@ -1,63 +1,63 @@
 (() => {
-  'use strict'
-
-  angular
-  .module('randajad')
-  .service('servicioSesion', servicioSesion);
-
-  servicioSesion.$inject = ['servicioUsuarios', 'dataStorageFactory'];
-
-  function servicioSesion(servicioUsuarios, dataStorageFactory){
-      const key = 'session';
-
-      let sessionAPI = {
-          inicioSesion: _inicioSesion,
-          cerrarSesion: _cerrarSesion,
-          usuarioActivo: _usuarioActivo,
-          infoUsuarioActivo: _infoUsuarioActivo
+    'use strict'
+  
+    angular
+    .module('randajad')
+    .service('servicioEmpleados', Tareas);
+  
+    Tareas.$inject = ['$q', '$log', '$http','dataStorageFactory'];
+  
+    function Tareas($q, $log, $http, dataStorageFactory){
+        const key= 'tarea';
+        const publicAPI = {
+            agregarTarea: _agregarTarea,
+            retornarTareas: _retornarTareas,
+            actualizarTarea: _actualizarTarea
+  
+           
+  
+        }
+        return publicAPI
+  
+        function _agregarTarea(ptareaAgregar){
+            let tareasBD = _retornarTareas(),
+                repetido = false;
+                
+            for(let i=0; i<tareasBD.length; i++){
+                if(tareasBD[i].getId() == ptareasAgregar.getId()){
+                    repetido = true;
+                }
+            }
+  
+            if(!repetido){
+                dataStorageFactory.agregarTarea(ptareaAgregar)
+            }
+            return !repetido
+        }
+  
+        function _retornarTareas(){
+            let tareasBD = dataStorageFactory.retornarTareas(),
+                todasLasTareas = [];
+  
+            if(tareasBD.length == 0){
+            }else{
+                tareasBD.forEach(obj => {
+                    let nuevoRegistroTarea = new Tarea(obj.nombreTarea,obj.descripcion, obj.fecha, obj.prioridad, obj.estado, obj.costo,obj.proyecto,obj.proyecto);
+                    todasLasTareas.push(nuevoRegistroTarea);
+                });
+            }
+            return todasLasTareas
+        }
+  
+        
+  
+       
+  
+      function _actualizarTarea(ptarea){
+          dataStorageFactory.updateTareaData(ptarea);
+          
       }
-      return sessionAPI
-
-      function _inicioSesion(pcredenciales){
-          let usuariosBD = servicioUsuarios.retornarUsuarios(),
-              exito = false;
-
-          for(let i=0; i<usuariosBD.length; i++){
-              if(usuariosBD[i].correo == pcredenciales.correo && usuariosBD[i].contrasena == pcredenciales.contrasena){
-                  dataStorageFactory.crearSesion(key ,usuariosBD[i].correo);
-                  exito = true;
-              }
-          }
-          return exito
-      }
-
-      function _cerrarSesion(){
-          dataStorageFactory.eliminarSesion(key);
-      }
-
-      function _usuarioActivo(){
-          let sesionActiva = dataStorageFactory.retornarSesionActiva(key),
-              correoActivo;
-
-          if(!sesionActiva){
-              correoActivo = undefined;
-          }else{
-              correoActivo = sesionActiva;
-          }
-          return correoActivo
-      }
-
-      function _infoUsuarioActivo(pcorreo){
-          let usuariosBD = servicioUsuarios.retornarUsuarios(),
-              infoUsuarioActivo = [];
-
-          for(let i=0; i<usuariosBD.length; i++){
-              if(usuariosBD[i].getId() == pcorreo){
-                  infoUsuarioActivo = usuariosBD[i];
-              }
-          }
-          return infoUsuarioActivo
-      }
-
-  }
-})();
+  
+    
+    }
+  })();

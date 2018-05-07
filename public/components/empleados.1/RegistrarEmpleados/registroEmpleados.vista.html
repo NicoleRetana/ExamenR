@@ -9,7 +9,7 @@
       
       <div class="col-md-12">
         
-        <form name="formregistroEmpleados" ng-submit="vm.preRegistrarEmpleado(vm.empleado)"novalidate class="col-md-8"
+        <form name="formregistroEmpleados" ng-submit="vm.modificarEmpleado(vm.empleadoPorEditar)"novalidate class="col-md-8" >
           <!-- Información Personal -->
    
             <h1>Registro empleados</h1>
@@ -17,7 +17,7 @@
             <div class="form-row">
               <div class="form-group col-md-12">
                 <label for="inputFirstName">Nombre completo</label>
-                <input type="text" class="form-control" ng-model="vm.empleado.nombreCompleto " name="txtFirstName"name="txtFirstName"
+                <input type="text" class="form-control" ng-model="vm.empleadoPorEditar.nombreCompleto " name="txtFirstName"
                   pattern="[ñáéíóúA-Za-z ]+" autocomplete="off" required>
                 <div ng-messages="formregistroEmpleados.txtFirstName.$error" role="alert">
                   <div ng-message="required">
@@ -31,20 +31,20 @@
 
               <div class="form-group ">
                 <label>* ID de empleado</label>
-                <input type="number" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 border-dark" ng-model="vm.empleado.codigo" required >
+                <input type="number" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 border-dark" ng-model="vm.empleadoPorEditar.codigo" required >
             </div>
         
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="">Foto del empleado</label>
-                  <input type="file" files-Input ng-model="vm.empleado.photo">
+                  <input type="file" files-Input ng-model="vm.empleadoPorEditar.photo">
                 </div>
               </div>
         
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputFechaNacimiento">Fecha de nacimiento</label>
-                  <input type="date" class="form-control" ng-model="vm.empleado.fecha" name="txtBirthdate"
+                  <input type="date" class="form-control" ng-model="vm.empleadoPorEditar.fecha" name="txtBirthdate"
                     autocomplete="off" required>
                   <div ng-messages="formregistroEmpleados.txtBirthdate.$error" role="alert">
                     <div ng-message="required">
@@ -57,7 +57,7 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputEmail">Correo Electrónico:</label>
-                <input type="email" class="form-control" ng-model="vm.empleado.correo" name="txtClientEmail" autocomplete="off"
+                <input type="email" class="form-control" ng-model="vm.empleadoPorEditar.correo" name="txtClientEmail" autocomplete="off"
                   required>
                 <div ng-messages="formregistroEmpleados.txtClientEmail.$error" role="alert">
                   <div ng-message="required">
@@ -67,7 +67,7 @@
               </div>
               <div class="form-group col-md-6">
                 <label for="inputEmail">Contraseña:</label>
-                <input type="password" class="form-control" ng-model="vm.empleado.contrasena" name="txtClientPassword" autocomplete="off"
+                <input type="password" class="form-control" ng-model="vm.empleadoPorEditar.contrasena" name="txtClientPassword" autocomplete="off"
                   required>
                 <div ng-messages="formregistroEmpleados.txtClientPassword.$error" role="alert">
                   <div ng-message="required">
@@ -78,7 +78,7 @@
             </div>
             <div class="form-group col-md-6">
               <label for="inputEmail">Confirme su contraseña:</label>
-              <input type="password" class="form-control" ng-model="vm.empleado.confirmarContrasena" name="txtClientPassword" autocomplete="off"
+              <input type="password" class="form-control" ng-model="vm.empleadoPorEditar.confirmarContrasena" name="txtClientPassword" autocomplete="off"
                 required>
               <div ng-messages="formregistroEmpleados.txtClientPassword.$error" role="alert">
                 <div ng-message="required">

@@ -1,0 +1,32 @@
+<header-Directive></header-Directive>
+<form class="">
+  <div class=" col-12 col-md-4 mt-4 mb-4">
+    <h3>Buscar hotel</h3>
+    <input type="text" class="form-control" ng-model="searchHotel" placeholder="Búsqueda de hoteles">
+  </div>
+</form>
+
+<div class="jumbotron fixImage" ng-repeat="empleados in vm.listarEmpleadosDeshabilitados| filter:searchEmpleado">
+  <h3 class="display-4">{{empleados.nombreCompleto}}</h3>
+
+  <hr class="my-4">
+ 
+    <div class="col-md-6 col-12">
+      <img src="{{empleados.photo}}" class="img img-fluid img-circle">
+    </div>
+    <div class="col-md-6">
+  <hr class="my-4">
+  <p>Fecha de nacimiento:{{empleados.fecha | date: dd-MM-YYYY}}</p>
+  <p>Edad: {{empleados.edad}}.</p>
+  <hr class="my-4">
+  
+    
+     
+      <p>Correo electrónico: {{empleados.correo}}</p>
+      <button class="btn btn-lg btnModify" ng-click="vm.modify(Empleado)" >Habilitar empleado</button>
+      
+    </div>
+  </div>
+ 
+  >
+</div>

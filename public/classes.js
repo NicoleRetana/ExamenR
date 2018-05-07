@@ -26,13 +26,31 @@ setId(pcodigo){
     return this.estado;
 }
 
-
-
-
   }
 
 
  
-
+  class Tarea{
+    constructor(pnombreTarea,pdescripcion,pfecha,pprioridad, pestado,pcosto, pproyecto){
+     this._id=0;
+      this.nombreTarea = pnombreTarea;
+      this.descripcion = pdescripcion;
+      this.fecha = pfecha;
+      this.prioridad = pprioridad;
+      this.estado = pestado;
+      this.costo = pcosto;
+      this.proyecto = pproyecto;
+      this.estadoTarea = 'activo';
+      
+    }
+   
+  setId(pid){
+     this._id=pid;
+  }
+   
+   
+  
+    }
+  
 
  
