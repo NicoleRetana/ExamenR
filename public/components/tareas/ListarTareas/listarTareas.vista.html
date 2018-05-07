@@ -1,0 +1,38 @@
+<header-Directive></header-Directive>
+<form class="">
+  <div class=" col-12 col-md-4 mt-4 mb-4">
+    <h3>Buscar hotel</h3>
+    <input type="text" class="form-control" ng-model="searchHotel" placeholder="Búsqueda de hoteles">
+  </div>
+</form>
+
+<div class="jumbotron fixImage" ng-repeat="tareas in vm.retornarTareas | filter:searchTarea">
+  <h3 class="display-4">{{tareas.nombreTarea}}</h3>
+
+  <hr class="my-4">
+ 
+    
+  <hr class="my-4">
+  <p>Descripción: {{tareas.descripcion}}.</p>
+  <p>Fecha: {{tareas.fecha }}.</p>
+  <p>Prioridad: {{tareas.prioridad}}.</p>
+  <p>Estado: {{tareas.estado}}.</p>
+  <p>Costo: {{tareas.costo}}.</p>
+  <p>Proyecto:{{empleados.proyecto}}</p>
+  
+  <hr class="my-4">
+  
+    
+     
+      
+      
+     
+
+      <!-- <button class="btn " ng-click="vm.deshabilitarEmpleado(empleado)" ng-show="{{empleados.getEstado()}}==true">Desactivar</button> -->
+      <button class="btn btn-info" ng-click="vm.modificarEmpleado(empleados)">Modificar tarea</button>
+    </div>
+  </div>
+ 
+  >
+</div>
+

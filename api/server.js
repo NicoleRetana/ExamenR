@@ -36,12 +36,13 @@ app.use( (req, res, next) => {
 
 const index = require('./index'),
         mail = require('./components/mail/mail.route'),
-       
+        tareas = require('./components/tareas/tareas.route'),
         empleados = require('./components/empleados/empleados.route');
         
       
 
 app.use('/api', empleados);
+app.use('/api', tareas);
 app.use('/api', mail);
 
 

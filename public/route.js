@@ -31,6 +31,22 @@
         controllerAs: 'vm'
       })
 
+
+      .state('registroTareas', {
+        url: '/registroTareas',
+        templateUrl: './components/tareas/RegistrarTareas/registroTareas.vista.html',
+        data: {
+          pageTitle: 'Randajad| Registro de tareas'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/tareas/RegistrarTareas/registroTareas.controlador.js')
+          }]
+        },
+        controller: 'controladorRegistroTareas',
+        controllerAs: 'vm'
+      })
+
       .state('listaEmpleados', {
         url: '/listaEmpleados',
         templateUrl: './components/empleados/listarEmpleados/listarEmpleados.vista.html',
@@ -48,6 +64,25 @@
         controller: 'listaEmpleadosControlador',
         controllerAs: 'vm'
       })
+
+      .state('listaTareas', {
+        url: '/listaTareas',
+        templateUrl: './components/tareas/ListarTareas/listarTareas.vista.html',
+        data: {
+          pageTitle: 'Lista de tareas'
+        },
+        params: {
+          tempTarea: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/tareas/ListarTareas/listarTareas.controlador.js')
+          }]
+        },
+        controller: 'listaTareasControlador',
+        controllerAs: 'vm'
+      })
+     
 
 
       .state('listaEmpleadosDeshabilitados', {
@@ -71,7 +106,7 @@
         url: '/modificarEmpleado',
         templateUrl: './components/empleados/modificarEmpleados/modificarEmpleado.vista.html',
         data: {
-          pageTitle: 'Lista de empleados'
+          pageTitle: 'Modificsr empleados'
         },
         params: {
           tempEmpleado: ''
@@ -85,18 +120,21 @@
         controllerAs: 'vm'
       })
 
-      .state('perfilEmpleado', {
-        url: '/perfilEmpleado',
-        templateUrl: './components/empleados/perfilEmpleados/perfilEmpleados.vista.html',
+      .state('modificarTarea', {
+        url: '/modificarTarea',
+        templateUrl: './components/tareas/ModificarTareas/modificarTarea.vista.html',
         data: {
-          pageTitle: 'Perfil de empleado'
+          pageTitle: 'Modificar tareas'
+        },
+        params: {
+          tempTarea: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/empleados/perfilEmpleados/perfilEmpleados.controlador.js')
+            return $ocLazyLoad.load('./components/tareas/ModificarTareas/modificarTarea.controlador.js')
           }]
         },
-        controller: 'controladorPerfilEmpleado',
+        controller: 'controladorModificarTarea',
         controllerAs: 'vm'
       })
 
