@@ -1,46 +1,50 @@
 (() => {
-  'use strict'
-  angular
-    .module('randajad')
-    .controller('listaTareasControlador', listaTareasControlador);
+    'use strict'
+    angular
+        .module('randajad')
+        .controller('listaTareasControlador', listaTareasControlador);
 
-  listaTareasControlador.$inject = [ '$window','$state', '$stateParams',  'servicioTareas'];
+    listaTareasControlador.$inject = ['$window', '$state', '$stateParams', 'servicioTareas'];
 
-  function listaTareasControlador($window, $state, $stateParams,servicioTareas ) {
-    let vm = this;
+    function listaTareasControlador($window, $state, $stateParams, servicioTareas) {
+        let vm = this;
 
-    vm.retornarTareas= servicioTareas.retornarTareas();
-    vm.eliminarTarea = (ptarea) => {
-      let eliminar = swal({
-          title: '¿Desea eliminar este empleado',
-          body: 'Se eliminará el empleado',
-          buttons: ['Cancelar', 'Continuar'],
-          icon: 'info'
-      }).then((confirmacion) => {
-          if(confirmacion){
-            servicioTareas.eliminarEmpleado(ptarea);
-              $state.reload();
-          }
-      })
-  }
+        let empleadoTemp = JSON.parse($stateParams.tempEmpleado);
+        let empleado = Object.assign(new Empleado(), empleadoTemp);
 
-  vm.modificarTarea = (tarea) => {
-    $state.go('modificarTareas', { tempTarea: JSON.stringify(tarea) });
-}
+        vm.retornarTareas = listarTareas();
 
-vm.desactivaTareas = (tarea) => {
-    tarea.setEstadoTarea(false);
+        
+        function listarTareas(){
+            let listaTareasBD = servicioTareas.retornarTareas();
+            let listaTareas= [];
+            for (let i = 0; i < listaTareasBD.length; i++) {
+                if(listaTareasBD[i].empleado == empleado.codigo){
+                    listaTareas.push(listaTareasBD[i]);
+                }
+            }
+            console.log(listaTareas);
+            return listaTareas;
+        }
 
-    servicioTareas.updateTarea(tarea);
-    $window.location.reload();
-}
 
-vm.activaTareas= (tarea) => {
-    tarea.setEstadoTarea(true);
+        vm.modificarTarea = (tarea) => {
+            $state.go('modificarTareas', { tempTarea: JSON.stringify(tarea) });
+        }
 
-    servicioTareas.updateTarea(tarea);
-    $window.location.reload();
-    
-}
-  }
+        vm.desactivaTareas = (tarea) => {
+            tarea.setEstadoTarea(false);
+
+            servicioTareas.updateTarea(tarea);
+            $window.location.reload();
+        }
+
+        vm.activaTareas = (tarea) => {
+            tarea.setEstadoTarea(true);
+
+            servicioTareas.updateTarea(tarea);
+            $window.location.reload();
+
+        }
+    }
 })();

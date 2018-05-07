@@ -119,34 +119,30 @@
 
 
     
-    function _retornarTareas(){
-      let tareasBD = [];
+    function _retornarTareas () {
+      let listaTareas = [];
 
-      let peticion = $.ajax({
-          url: 'http://localhost:4000/api/retornar_tareas',
-          type: 'get',
-          contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-          dataType: 'json',
-          async: false,
-          data: {}                
+      let peticion = $.ajax ({
+        url: 'http://localhost:4000/api/tareas',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {},
       });
 
-      peticion.done((tareas) => {
-          tareasBD = tareas;
-          tareas.forEach(objTarea => {
-            let tareaTemp = Object.assign(new Tarea(), objTarea);
-  
-            
+      peticion.done (tareas => {
+        console.log ('Datos que vienen desde la base de datos');
+        console.log (tareas);
+        listaTareas = tareas;
       });
-      peticion.fail(() => {
-          tareasBD = [];
-          console.log('Error en la petición');
+      peticion.fail (() => {
+        listaTareas = [];
+        console.log ('Ocurrió un error');
       });
-    
-    });
-    return tareasBD;
-}
 
+      return listaTareas;
+    }
       
     function _sendMail(data) {
       let response;

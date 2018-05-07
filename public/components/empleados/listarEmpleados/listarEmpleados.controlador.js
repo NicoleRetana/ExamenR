@@ -28,6 +28,10 @@
     $state.go('modificarEmpleados', { tempEmpleado: JSON.stringify(empleado) });
 }
 
+vm.listarTareas = (empleado) => {
+    $state.go('listaTareas', { tempEmpleado: JSON.stringify(empleado) });
+}
+
 vm.desactivaEmpleados = (empleado) => {
     empleado.setEstado(false);
 

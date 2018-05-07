@@ -72,7 +72,7 @@
           pageTitle: 'Lista de tareas'
         },
         params: {
-          tempTarea: ''
+          tempEmpleado: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {

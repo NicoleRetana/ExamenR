@@ -24,7 +24,7 @@
                 repetido = false;
                 
             for(let i=0; i<tareasBD.length; i++){
-                if(tareasBD[i].getId() == ptareasAgregar.getId()){
+                if(tareasBD[i]._id == ptareaAgregar._id){
                     repetido = true;
                 }
             }
@@ -42,11 +42,14 @@
             if(tareasBD.length == 0){
             }else{
                 tareasBD.forEach(obj => {
-                    let nuevoRegistroTarea = new Tarea(obj.nombreTarea,obj.descripcion, obj.fecha, obj.prioridad, obj.estado, obj.costo,obj.proyecto,obj.proyecto,obj.empleado);
+                    obj.fecha = new Date(obj.fecha);
+                    let nuevoRegistroTarea = Object.assign(new Tarea(), obj);
                     todasLasTareas.push(nuevoRegistroTarea);
                 });
             }
+            console.log(todasLasTareas);
             return todasLasTareas
+            
         }
   
         

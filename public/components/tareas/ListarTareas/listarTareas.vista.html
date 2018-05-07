@@ -1,8 +1,8 @@
 <header-Directive></header-Directive>
-<form class="">
-  <div class=" col-12 col-md-4 mt-4 mb-4">
-    <h3>Buscar hotl</h3>
-    <input type="text" class="form-control" ng-model="searchHotel" placeholder="Búsqueda de hoteles">
+<form class="pt-5">
+  <div class=" pt-5 col-12 col-md-4 mt-4 mb-4">
+    <h3 class="pt-5">Buscar tarea</h3>
+    <input type="text" class="form-control" ng-model="searchTarea" placeholder="Búsqueda de tareas">
   </div>
 </form>
 
@@ -14,11 +14,11 @@
     
   <hr class="my-4">
   <p>Descripción: {{tareas.descripcion}}.</p>
-  <p>Fecha: {{tareas.fecha }}.</p>
+  <p>Fecha: {{tareas.fecha | date}}.</p>
   <p>Prioridad: {{tareas.prioridad}}.</p>
   <p>Estado: {{tareas.estado}}.</p>
   <p>Costo: {{tareas.costo}}.</p>
-  <p>Proyecto:{{empleados.proyecto}}</p>
+  <p>Proyecto:{{tareas.proyecto}}</p>
   
   <hr class="my-4">
   
@@ -32,7 +32,5 @@
       <button class="btn btn-info" ng-click="vm.modificarEmpleado(empleados)">Modificar tarea</button>
     </div>
   </div>
- 
-  >
 </div>
 
