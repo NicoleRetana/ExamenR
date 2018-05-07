@@ -9,12 +9,22 @@
       
       <div class="col-md-12">
         
-        <form name="formregistroEmpleados" ng-submit="vm.preRegistrarTarea(vm.tarea)"novalidate class="col-md-8"
+        <form name="formregistroEmpleados" ng-submit="vm.registrarTarea(vm.tarea)"novalidate class="col-md-8"
           <!-- Información Personal -->
    
             <h1>Registro tareas</h1>
           
             <div class="form-row">
+
+                <div class="form-group col-md-12 ">
+                    <label for="Groups" class="col-sm-2 control-label">Seleccione empleado  </label>
+                    
+                        <select name="userGroups" id="userGroups" ng-model="vm.tarea.empleado" >
+                            <option ng-repeat="empleados in vm.retornarEmpleados " value="{{empleados.codigo}}" selected >{{empleados.nombreCompleto}}</option>
+                        </select>
+                       
+                    
+                </div>
               <div class="form-group col-md-12">
                 <label for="inputFirstName">Nombre de la tarea</label>
                 <input type="text" class="form-control" ng-model="vm.tarea.nombreTarea" name="txtFirstName"name="txtFirstName"
@@ -58,7 +68,7 @@
                 </div>
           
         
-                div class="form-group col-md-12">
+                <div class="form-group col-md-12">
                 <label for="inputFirstName">Prioridad</label>
                 <input type="text" class="form-control" ng-model="vm.tarea.prioridad" name="txtFirstName"name="txtFirstName"
                   pattern="[ñáéíóúA-Za-z ]+" autocomplete="off" required>
@@ -73,7 +83,7 @@
               </div>
 
 
-              div class="form-group col-md-12">
+              <div class="form-group col-md-12">
               <label for="inputFirstName">Estado</label>
               <input type="text" class="form-control" ng-model="vm.tarea.estado" name="txtFirstName"name="txtFirstName"
                 pattern="[ñáéíóúA-Za-z ]+" autocomplete="off" required>
@@ -93,7 +103,7 @@
           </div>
             
 
-          div class="form-group col-md-12">
+          <div class="form-group col-md-12">
           <label for="inputFirstName">Nombre del proyecto</label>
           <input type="text" class="form-control" ng-model="vm.tarea.proyecto" name="txtFirstName"name="txtFirstName"
             pattern="[ñáéíóúA-Za-z ]+" autocomplete="off" required>

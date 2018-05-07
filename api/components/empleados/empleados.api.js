@@ -10,6 +10,7 @@ module.exports.registrar = (req, res) => {
         edad: req.body.edad,
         correo: req.body.correo,
         contrasena: req.body.contrasena,
+        listaTareas: req.body.listaTareas,
       
     
 
@@ -42,9 +43,26 @@ module.exports.update = (req,res) => {
     });
   };
   
-  
+  module.exports.buscar_empleado_por_codigo = function(req, res){
+    EmpleadoModel.findById({codigo : req.body.codigo}).then(
+        function(empleado){
+            res.send(empleado);
+        });
+  }; 
   
 
+  module.exports.agregar_tarea_empleado = function (req, res) {
 
+    EmpleadoModel.update({ codigo: req.body.codigo }, { $push: { 'listaTareas': { _id: req.body._id } } },
+        function (error) {
+            if (error) {
+                res.json({ success: false, msg: 'No se ha actualizado la tarea debido al siguiente error: ' + handleError(error) });
+            } else {
+                res.json({ success: true, msg: 'El usuario ha sido modificado con éxito' });
+            }
+  
+        });
+  
+  };
 
 

@@ -26,6 +26,7 @@
       vm.modifyTarea.estado = vm.objNuevaTarea.estado;
       vm.modifyTarea.costo = vm.objNuevaTarea.costo;
       vm.modifyTarea.proyecto = vm.objNuevaTarea.proyecto;
+      vm.modifyTarea.empleado= vm.objNuevaTarea.empleado;
       vm.modifyTarea.estadoTarea = vm.objNuevaTarea.estadoTarea;
 
       

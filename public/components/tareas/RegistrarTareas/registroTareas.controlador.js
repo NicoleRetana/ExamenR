@@ -5,15 +5,17 @@
   .module('randajad')
   .controller('controladorRegistroTareas', controladorRegistroTareas);
 
-  controladorRegistroTareas.$inject = ['$http','$state', 'servicioTareas'];
+  controladorRegistroTareas.$inject = ['$http','$state', 'servicioTareas','servicioEmpleados'];
   
-  function controladorRegistroTareas($http, $state, servicioTareas){
+  function controladorRegistroTareas($http, $state, servicioTareas,servicioEmpleados){
       let vm = this;
+      vm.retornarEmpleados= servicioEmpleados.retornarEmpleados();
       vm.registrarTarea = (ptareasRegistar) => {
           
           let tempTarea = Object.assign(new Tarea(), ptareasRegistar);
-  
-              let exito = servicioTareas.agregarTarea(nuevoRegistroTarea);
+        //   let nuevoRegistroTarea = new Tarea(ptareasRegistar.nombreTarea, ptareasRegistar.descripcion, ptareasRegistar.fecha ,ptareasRegistar.prioridad, ptareasRegistar.estado,ptareasRegistar.costo,ptareasRegistar.proyecto);
+              
+              let exito = servicioTareas.agregarTarea(tempTarea);
 
               if(!exito){
                   swal({

@@ -12,8 +12,8 @@
       const publicAPI = {
           agregarEmpleado: _agregarEmpleado,
           retornarEmpleados: _retornarEmpleados,
-          actualizarEmpleado: _actualizarEmpleado
-
+          actualizarEmpleado: _actualizarEmpleado,
+          addTareaEmpleado:_addTareaEmpleado
          
 
       }
@@ -50,8 +50,11 @@
           if(empleadosBD.length == 0){
           }else{
               empleadosBD.forEach(obj => {
+
                   let nuevoRegistroEmpleado = new Empleado(obj.nombreCompleto,obj.codigo, obj.photo, obj.fecha, obj.edad, obj.correo,obj.contrasena);
+                  nuevoRegistroEmpleado.listaTareas=obj.listaTareas;
                   todosLosEmpleados.push(nuevoRegistroEmpleado);
+
               });
           }
           return todosLosEmpleados
@@ -75,6 +78,26 @@
         dataStorageFactory.updateEmpleadoData(pempleado);
         
     }
+
+
+     
+        function _addTareaEmpleado(pNuevaTarea) {
+            let empleadosBD = dataStorageFactory.retornarEmpleados();
+            let registroExitoso = false;
+            let empleado = {};
+            for (let i = 0; i < empleadosBD.length; i++) {
+              if (empleadosBD[i].codigo == pNuevaTarea.empleado) {
+                empleado = dataStorageFactory.buscarEmpleadoPorCodigo(empleadosBD[i].codigo);
+              }
+            }
+      
+            registroExitoso = dataStorageFactory.agregarTarea(pNuevaTarea);
+            
+            dataStorageFactory.agregarTareaEmpleado(empleado.codigo, pNuevaTarea);
+        
+            
+            return registroExitoso;
+          };
 
   
   }

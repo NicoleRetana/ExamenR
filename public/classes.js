@@ -9,6 +9,7 @@ class Empleado{
     this.correo = pCorreo;
     this.contrasena = pContrasena;
     this.estado = pestado;
+    this.listaTareas=[];
     
   }
   getId(){
@@ -17,6 +18,10 @@ class Empleado{
 
 setId(pcodigo){
    this.codigo=pcodigo;
+}
+
+setTarea(ptarea){
+  this.listaTareas.push(ptarea);
 }
   getCorreo() {
     return this.correo;
@@ -31,7 +36,7 @@ setId(pcodigo){
 
  
   class Tarea{
-    constructor(pnombreTarea,pdescripcion,pfecha,pprioridad, pestado,pcosto, pproyecto){
+    constructor(pnombreTarea,pdescripcion,pfecha,pprioridad, pestado,pcosto, pproyecto,pempleado){
      this._id=0;
       this.nombreTarea = pnombreTarea;
       this.descripcion = pdescripcion;
@@ -40,6 +45,7 @@ setId(pcodigo){
       this.estado = pestado;
       this.costo = pcosto;
       this.proyecto = pproyecto;
+      this.empleado = pempleado;
       this.estadoTarea = 'activo';
       
     }

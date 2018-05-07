@@ -3,11 +3,11 @@
   
     angular
     .module('randajad')
-    .service('servicioEmpleados', Tareas);
+    .service('servicioTareas', servicioTareas);
   
-    Tareas.$inject = ['$q', '$log', '$http','dataStorageFactory'];
+    servicioTareas.$inject = ['$q', '$log', '$http','dataStorageFactory'];
   
-    function Tareas($q, $log, $http, dataStorageFactory){
+    function servicioTareas($q, $log, $http, dataStorageFactory){
         const key= 'tarea';
         const publicAPI = {
             agregarTarea: _agregarTarea,
@@ -42,7 +42,7 @@
             if(tareasBD.length == 0){
             }else{
                 tareasBD.forEach(obj => {
-                    let nuevoRegistroTarea = new Tarea(obj.nombreTarea,obj.descripcion, obj.fecha, obj.prioridad, obj.estado, obj.costo,obj.proyecto,obj.proyecto);
+                    let nuevoRegistroTarea = new Tarea(obj.nombreTarea,obj.descripcion, obj.fecha, obj.prioridad, obj.estado, obj.costo,obj.proyecto,obj.proyecto,obj.empleado);
                     todasLasTareas.push(nuevoRegistroTarea);
                 });
             }

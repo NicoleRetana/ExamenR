@@ -15,7 +15,7 @@
           sendMail: _sendMail,
           agregarTarea: _agregarTarea,
           retornarTareas: _retornarTareas,
-          updateTareaData: _updateTarea
+          updateTareaData: _updateTareaData
           
           
 
@@ -43,7 +43,8 @@
                   'edad': data.edad,
                   'correo': data.correo,
                   'contrasena': data.contrasena,
-                  'estado': data.getEstado()
+                  'listaTarea': data.listaTarea,
+                  'estado': data.estado
                  
               }
           });
@@ -74,8 +75,8 @@
                 'estado': data.estado,
                 'costo': data.costo,
                 'proyecto': data.proyecto,
-                'estadoTarea': data.getEstadoTarea()
-               
+                'empleado': data.empleado
+                
             }
         });
         peticion.done((datos) => {
@@ -103,6 +104,7 @@
               empleadosBD = empleados;
               empleados.forEach(objEmpleado => {
                 let empleadoTemp = Object.assign(new Empleado(), objEmpleado);
+                empleadoTemp.listaTareas=objEmpleado.listaTareas;
       
                 
           });
@@ -117,7 +119,7 @@
 
 
     
-    function _retornartareas(){
+    function _retornarTareas(){
       let tareasBD = [];
 
       let peticion = $.ajax({
@@ -173,17 +175,7 @@
 
     
 
-    function _obtenerListaPorEstados(pestado) {
-        let listaEmpleados = _obtenerlistadeEmpleados(),
-            listaFiltrada = [];
-  
-        for(let i = 0; i < listaEmpleados.length; i++){
-          if(listaEmpleados[i].getEstado() == pestado){
-            listaFiltrada.push(listaEmpleados[i]);
-          }
-        }
-        return listaFiltrada;
-      }
+   
 
 
    
@@ -240,7 +232,7 @@
             'estado': data.estado,
             'costo': data.costo,
             'proyecto': data.proyecto,
-            'estadoTarea': data.estadoTarea,
+           
                 
           }
         });
@@ -258,8 +250,24 @@
       }
 
 
-
+      
    
-    
+      function agregarTareaEmpleado (pcodigo, pTarea) {
+        let peticion = $.ajax ({
+          url: 'http://localhost:4000/api/agregar_tarea_empleado',
+          type: 'post',
+          contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+          dataType: 'json',
+          async: false,
+          data: {
+            codigo: pcodigo,
+            _id: pTarea._id,
+          },
+        });
+  
+        peticion.done (function (response) {});
+  
+        peticion.fail (function () {});
+      }
   }
 })();

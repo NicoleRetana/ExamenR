@@ -8,6 +8,7 @@ var EmpleadoSchema = new mongoose.Schema({
     edad: {type: String},
     correo: {type: String},
     contrasena: {type: String},
+    listaTareas: {type: Array},
     state : {type : String},
   
    

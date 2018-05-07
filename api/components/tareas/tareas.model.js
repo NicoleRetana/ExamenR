@@ -8,7 +8,9 @@ var TareaSchema = new mongoose.Schema({
     estado: {type: String},
     costo: {type: String},
     proyecto: {type: String},
+    empleado : {type : String},
     estadoTarea : {type : String},
+    
   
    
 });

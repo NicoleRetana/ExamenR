@@ -36,7 +36,7 @@
          
           
           empleadosBD.forEach(objEmpleado => {
-            if (objEmpleado.codigo == vm.objNuevoEmpleado.codigo) {
+            if (objEmpleado._id == vm.objNuevoEmpleado._id) {
               objEmpleado.nombreCompleto = pEmpleado.nombreCompleto;
               
               objEmpleado.photo = pEmpleado.photo;

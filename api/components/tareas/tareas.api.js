@@ -10,7 +10,7 @@ module.exports.registrar = (req, res) => {
         estado: req.body.estado,
         costo: req.body.costo,
         proyecto: req.body.proyecto,
-        
+        empleado: req.body.empleado,
     
 
     });

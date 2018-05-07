@@ -22,6 +22,14 @@ router.route('/retornar_empleados')
   .put((req, res) => {
     empleados.update(req,res);
 });
+router.route('/buscar_empleado_id')
+  .post(function (req, res) {
+    empleados.buscar_empleado_por_codigo(req, res);
+  });
 
+router.route('/agregar_tarea_empleado')
+  .post(function (req, res) {
+    empleados.agregar_tarea_empleado(req, res);
+  });
 
 module.exports = router;
